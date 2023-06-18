@@ -1,10 +1,13 @@
 const initialState = {
-    // Define tu estado inicial aquí
+    countries: []
   };
   
   const reducer = (state = initialState, action) => {
-    // Maneja las acciones y actualiza el estado en consecuencia
-    return state;
+    switch (action.type) {
+    
+      default:return state
+        break;
+    }
   };
   
   export default reducer;
