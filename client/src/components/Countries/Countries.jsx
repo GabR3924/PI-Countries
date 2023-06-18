@@ -1,9 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-const Countries = () => {
+const Countries = ({ results }) => {
   return (
-    <div>Countries</div>
-  )
-}
+    <div>
+      {console.log(results)}
+      {results && results.map(({ name, flag }, index) => (
+        <div key={index}>
+          país: {name}
+          <img src={flag} alt={`Bandera de ${name}`} />
+        </div>
+      ))}
+    </div>
+  );
+};
 
-export default Countries
+export default Countries;
