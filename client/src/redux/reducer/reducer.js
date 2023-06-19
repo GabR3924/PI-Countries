@@ -17,5 +17,7 @@ const initialState = {
   };
 }
   
+// console.log('State',action.payload)
+
   export default reducer;
   

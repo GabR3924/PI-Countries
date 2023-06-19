@@ -8,5 +8,8 @@ const store = createStore(
     composeEnhancer(applyMiddleware(thunk))
 )
 console.log('estado inicial:', store.getState())
+store.subscribe(() => {
+    console.log('cambio de estado', store.getState())
+})
 
 export default store

@@ -1,27 +1,20 @@
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCountries } from "./redux/actions/actions";
 import Countries from "./components/Countries/Countries";
 import "./App.css";
 
 function App() {
-  const [results, setResults] = useState(null);
-
   const dispatch = useDispatch();
-
+  const countries = useSelector((state) => state.countries);
 
   const handleSearch = () => {
     dispatch(getCountries());
   };
-  
 
-  // useEffect(() => {
-  //   console.log("Valor actual de results:", results);
-  // }, [results]);
-
-  return (
+  return ( 
     <>
-      <Countries/>
+      <Countries countries={countries} />
       <button onClick={handleSearch}>Buscar países</button>
     </>
   );
