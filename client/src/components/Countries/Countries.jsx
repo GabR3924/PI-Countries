@@ -1,17 +1,15 @@
 import React from 'react';
-import { useSelector } from 'react-redux/dist/react-redux.min.js';
-
+import Card from '../Card/Card';
+import style from './Countries.module.css'
 
 const Countries = ({countries}) => {
-  // const results = useSelector(state => state.reducer.countries);
 
   return (
-    <div>
+    <div className={style.cards}>
       {countries && countries.map(({ name, flag }, index) => (
-        <div key={index}>
-          país: {name}
-          <img src={flag} alt={`Bandera de ${name}`} />
-        </div>
+        <Card key={index}
+        name={name}
+        flag={flag}/>
       ))}
     </div>
   );

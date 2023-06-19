@@ -1,0 +1,16 @@
+.card{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: column;
+    height: 14rem;
+    width: 12rem; 
+    border:2px solid rgb(62, 61, 61);
+    margin-bottom: .5rem;
+}
+
+.card img{
+    margin: 0;
+    height: 30%;
+    width: 60%; 
+}
