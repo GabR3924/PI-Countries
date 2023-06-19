@@ -1,6 +1,10 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-const Countries = ({ results }) => {
+
+const Countries = () => {
+  const results = useSelector(state => state.reducer.countries);
+
   return (
     <div>
       {console.log(results)}
