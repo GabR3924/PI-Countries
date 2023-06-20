@@ -1,16 +1,19 @@
 import React from 'react';
 import Card from '../Card/Card';
 import style from './Countries.module.css'
+import { connect } from 'react-redux';
+import { sortCountries, nextPage, prevPage } from '../../redux/actions/actions';
 
-const Countries = ({ countries, page, totalPages, onNextPage, onPrevPage }) => {
-
+const Countries = ({ countries, page, totalPages, onNextPage, onPrevPage, sortCountries }) => {
   return (
     <div className={style.cards}>
-      {console.log('countriesCard',countries)}
+      <div>
+        <button onClick={sortCountries}>A - Z</button>
+      </div>
       {countries && countries.map(({ name, flag }, index) => (
         <Card key={index}
-        name={name}
-        flag={flag}/>
+          name={name}
+          flag={flag} />
       ))}
       <p>
         Página {page + 1} de {totalPages}
@@ -25,4 +28,15 @@ const Countries = ({ countries, page, totalPages, onNextPage, onPrevPage }) => {
   );
 };
 
-export default Countries;
+const mapStateToProps = (state) => ({
+  countries: state.countries,
+  page: state.page
+});
+
+const mapDispatchToProps = {
+  sortCountries,
+  nextPage,
+  prevPage
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Countries);

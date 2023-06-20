@@ -6,7 +6,7 @@ import usePagination from "./usePagination/usePagination";
 function App() {
   const { visibleCountries,page, totalPages, handleNextPage, handlePrevPage } = usePagination();
 
-  return (
+  return ( 
     <>
         <Countries
         countries={visibleCountries}
