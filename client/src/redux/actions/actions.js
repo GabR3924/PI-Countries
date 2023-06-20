@@ -5,6 +5,8 @@ export const SET_PAGE = "SET_PAGE";
 export const NEXT_PAGE = 'NEXT_PAGE';
 export const PREV_PAGE = 'PREV_PAGE';
 export const SORT_COUNTRIES = 'SORT_COUNTRIES';
+export const SORT_COUNTRIES_DESCENDING = 'SORT_COUNTRIES_DESCENDING';
+
 
 
 export function getCountries() {
@@ -36,3 +38,12 @@ export function sortCountries() {
       dispatch({ type:SORT_COUNTRIES, payload: sortedData });
   }
 }
+
+export function sortCountriesDescending() {
+  return (dispatch, getState) => {
+      const data = [...getState().countries];
+      const sortedData = data.sort((a, b) => b.name.localeCompare(a.name));
+      dispatch({ type: SORT_COUNTRIES_DESCENDING, payload: sortedData });
+  }
+}
+

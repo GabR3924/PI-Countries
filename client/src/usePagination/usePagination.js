@@ -12,6 +12,8 @@ function usePagination() {
   const visibleCountries = countries.slice(startIndex, endIndex);
   const totalPages = Math.ceil(countries.length / itemsPerPage);
 
+  console.log('visible', visibleCountries)
+
   useEffect(() => {
     dispatch(getCountries());
   }, [dispatch]);
