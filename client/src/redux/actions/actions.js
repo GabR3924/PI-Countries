@@ -11,7 +11,8 @@ export function getCountries() {
     }
 }
 
-export const setPage = (page) => ({
-  type: SET_PAGE,
-  payload: page,
-});
+export function setPage(page){
+  return async (dispatch) => {
+    dispatch({ type:SET_PAGE, payload: page })
+  }
+}

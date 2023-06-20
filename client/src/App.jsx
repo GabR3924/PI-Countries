@@ -14,10 +14,6 @@ function App() {
   const visibleCountries = countries.slice(startIndex, endIndex);
   const totalPages = Math.ceil(countries.length / countriesPerPage);
 
-  console.log('Countries', countries)
-  console.log('visibles', visibleCountries)
- console.log("startIndex", startIndex, "endIndex", endIndex)
-
   useEffect(() => {
     dispatch(getCountries());
   }, [dispatch]);

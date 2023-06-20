@@ -1,8 +1,9 @@
-import { GET_COUNTRIES } from '../actions/actions'
+import { GET_COUNTRIES, SET_PAGE } from '../actions/actions'
 
 
 const initialState = {
-    countries: []
+    countries: [],
+    page: 0
   };
   
   const reducer = (state = initialState, action) => {
@@ -12,6 +13,12 @@ const initialState = {
           ...state,
           countries: action.payload
         };
+      case SET_PAGE:{
+        return{
+          ...state,
+          page: action.payload
+        }
+      };
       default:
         return state;
   };
