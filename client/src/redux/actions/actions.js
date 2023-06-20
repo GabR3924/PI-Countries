@@ -6,6 +6,8 @@ export const NEXT_PAGE = 'NEXT_PAGE';
 export const PREV_PAGE = 'PREV_PAGE';
 export const SORT_COUNTRIES = 'SORT_COUNTRIES';
 export const SORT_COUNTRIES_DESCENDING = 'SORT_COUNTRIES_DESCENDING';
+export const SORT_POPULATION = 'SORT_POPULATION'
+export const SORT_POPULATION_DESCENDING = 'SORT_POPULATION_DESCENDING'
 
 
 
@@ -47,3 +49,18 @@ export function sortCountriesDescending() {
   }
 }
 
+export function sortPopulation() {
+  return (dispatch, getState) => {
+      const data = [...getState().countries];
+      const sortedData = data.sort((a, b) => b.population - a.population);
+      dispatch({ type:SORT_POPULATION, payload: sortedData });
+  }
+}
+
+export function sortPopulationDescending() {
+  return (dispatch, getState) => {
+    const data = [...getState().countries];
+    const sortedData = data.sort((a, b) => a.population - b.population);
+    dispatch({ type:SORT_POPULATION_DESCENDING, payload: sortedData });
+}
+}

@@ -7,7 +7,13 @@ const getAll = async () => {
   const result = countries.map((country) => ({
     name: country.name.official,
     flag: country.flags.svg,
+    continent: country.region,
+    capital: country.capital,
+    subregion: country.subregion,
+    area: country.area,
+    population: country.population
   }));
+  console.log(result)
 
   return result;
 };

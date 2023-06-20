@@ -2,10 +2,10 @@ import React from 'react';
 import Card from '../Card/Card';
 import style from './Countries.module.css'
 import { connect } from 'react-redux';
-import { sortCountries, sortCountriesDescending } from '../../redux/actions/actions';
+import { sortCountries, sortCountriesDescending, sortPopulation, sortPopulationDescending } from '../../redux/actions/actions';
 import usePagination from "../../usePagination/usePagination";
 
-const Countries = ({ sortCountries, sortCountriesDescending }) => {
+const Countries = ({ sortCountries, sortCountriesDescending, sortPopulation,sortPopulationDescending }) => {
   const { visibleCountries, page, totalPages, handleNextPage, handlePrevPage } = usePagination();
 
   return (
@@ -13,11 +13,14 @@ const Countries = ({ sortCountries, sortCountriesDescending }) => {
       <div>
         <button onClick={sortCountries}>A - Z</button>
         <button onClick={sortCountriesDescending}>Z - A</button>
+        <button onClick={sortPopulation}>poblacion +</button>
+        <button onClick={sortPopulationDescending}>poblacion -</button>
       </div>
-      {visibleCountries && visibleCountries.map(({ name, flag }, index) => (
+      {visibleCountries && visibleCountries.map(({ name, flag, population }, index) => (
         <Card key={index}
           name={name}
-          flag={flag} />
+          flag={flag}
+          poblacion={population} />
       ))}
       <p>
         Página {page + 1} de {totalPages}
@@ -34,7 +37,9 @@ const Countries = ({ sortCountries, sortCountriesDescending }) => {
 
 const mapDispatchToProps = {
   sortCountries,
-  sortCountriesDescending
+  sortCountriesDescending,
+  sortPopulation,
+  sortPopulationDescending
 }
 
 export default connect(null, mapDispatchToProps)(Countries);

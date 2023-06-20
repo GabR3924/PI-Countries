@@ -1,4 +1,4 @@
-import { GET_COUNTRIES, SET_PAGE,NEXT_PAGE, PREV_PAGE, SORT_COUNTRIES, SORT_COUNTRIES_DESCENDING } from "../actions/actions";
+import { GET_COUNTRIES, SET_PAGE,NEXT_PAGE, PREV_PAGE, SORT_COUNTRIES, SORT_COUNTRIES_DESCENDING, SORT_POPULATION, SORT_POPULATION_DESCENDING } from "../actions/actions";
 
 const initialState = {
   countries: [],
@@ -41,12 +41,23 @@ const reducer = (state = initialState, action) => {
         countries: action.payload,
       };
     }
+    case SORT_POPULATION: {
+      return {
+        ...state,
+        countries:action.payload
+      }
+    }
+    case SORT_POPULATION_DESCENDING: {
+      return {
+        ...state,
+        countries:action.payload
+      }
+    }
     
     default:
       return state;
   }
 };
 
-// console.log('State',action.payload)
 
 export default reducer;

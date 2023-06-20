@@ -3,8 +3,8 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    height: 14rem;
-    width: 12rem; 
+    height: 16rem;
+    width: 14rem; 
     border:2px solid rgb(62, 61, 61);
     margin-bottom: .5rem;
 }
