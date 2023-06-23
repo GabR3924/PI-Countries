@@ -13,7 +13,6 @@ const getAll = async () => {
     area: country.area,
     population: country.population
   }));
-  console.log(result)
 
   return result;
 };

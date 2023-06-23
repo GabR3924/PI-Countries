@@ -1,9 +1,10 @@
-import { GET_COUNTRIES, SET_PAGE,NEXT_PAGE, PREV_PAGE, SORT_COUNTRIES, SORT_COUNTRIES_DESCENDING, SORT_POPULATION, SORT_POPULATION_DESCENDING } from "../actions/actions";
+import { GET_COUNTRIES, SET_PAGE,NEXT_PAGE, PREV_PAGE, SORT_COUNTRIES, SORT_COUNTRIES_DESCENDING, SORT_POPULATION, SORT_POPULATION_DESCENDING,SET_SELECTED_COUNTRY } from "../actions/actions";
 
 const initialState = {
   countries: [],
   page: 0,
-  itemsPerPage: 10
+  itemsPerPage: 10,
+  selectedCountry: null
 };
 
 const reducer = (state = initialState, action) => {
@@ -53,7 +54,12 @@ const reducer = (state = initialState, action) => {
         countries:action.payload
       }
     }
-    
+    case SET_SELECTED_COUNTRY:
+      return {
+        ...state,
+        selectedCountry: action.country,
+    };
+
     default:
       return state;
   }

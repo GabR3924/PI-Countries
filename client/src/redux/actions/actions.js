@@ -8,6 +8,7 @@ export const SORT_COUNTRIES = 'SORT_COUNTRIES';
 export const SORT_COUNTRIES_DESCENDING = 'SORT_COUNTRIES_DESCENDING';
 export const SORT_POPULATION = 'SORT_POPULATION'
 export const SORT_POPULATION_DESCENDING = 'SORT_POPULATION_DESCENDING'
+export const SET_SELECTED_COUNTRY = 'SET_SELECTED_COUNTRY';
 
 
 
@@ -63,4 +64,8 @@ export function sortPopulationDescending() {
     const sortedData = data.sort((a, b) => a.population - b.population);
     dispatch({ type:SORT_POPULATION_DESCENDING, payload: sortedData });
 }
+}
+
+export function setSelectedCountry(country) {
+  return { type: SET_SELECTED_COUNTRY, country };
 }
