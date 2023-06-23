@@ -54,6 +54,7 @@ const Countries = ({
               onClick={() => handleCountryClick(country)}
             />
           ))}
+          
       </div>
       <div className={style.buttons}>
         <p>
