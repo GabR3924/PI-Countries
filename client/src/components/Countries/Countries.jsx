@@ -1,29 +1,34 @@
 import React from "react";
 import Card from "../Card/Card";
 import style from "./Countries.module.css";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import {
   sortCountries,
   sortCountriesDescending,
   sortPopulation,
   sortPopulationDescending,
+  setSelectedCountry,
+  setSelectedContinent
 } from "../../redux/actions/actions";
 import usePagination from "../../usePagination/usePagination";
-import { setSelectedCountry } from "../../redux/actions/actions";
-import CardDetail from "../cardDetail/cardDetail";
 import { useNavigate } from "react-router-dom";
+import { getVisibleCountries } from "../../redux/reducer/selectors";
+
 
 const Countries = ({
   sortCountries,
   sortCountriesDescending,
   sortPopulation,
   sortPopulationDescending,
+  setSelectedCountry,
+  selectedContinent,
+  visibleCountries
 }) => {
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const selectedCountry = useSelector((state) => state.selectedCountry);
+
   const {
-    visibleCountries,
     page,
     totalPages,
     handleNextPage,
@@ -35,9 +40,25 @@ const Countries = ({
     navigate("/detail");
   };
 
+  const handleContinentChange = (event) => {
+    dispatch(setSelectedContinent(event.target.value));
+  };
+
+
   return (
     <div className={style.section}>
       <div className={style.filters}>
+        <label>
+          Continente:
+          <select onChange={handleContinentChange}>
+            <option value="All">Todos</option>
+            <option value="Africa">África</option>
+            <option value="Americas">América</option>
+            <option value="Asia">Asia</option>
+            <option value="Europe">Europa</option>
+            <option value="Oceania">Oceanía</option>
+          </select>
+        </label>
         <button onClick={sortCountries}>A - Z</button>
         <button onClick={sortCountriesDescending}>Z - A</button>
         <button onClick={sortPopulation}>poblacion +</button>
@@ -50,7 +71,7 @@ const Countries = ({
               key={country.id}
               name={country.name}
               flag={country.flag}
-              poblacion={country.population}
+              continent={country.continent}
               onClick={() => handleCountryClick(country)}
             />
           ))}
@@ -71,11 +92,17 @@ const Countries = ({
   );
 };
 
+const mapStateToProps = (state) => ({
+  visibleCountries: getVisibleCountries(state),
+});
+
 const mapDispatchToProps = {
   sortCountries,
   sortCountriesDescending,
   sortPopulation,
   sortPopulationDescending,
+  setSelectedContinent,
+  setSelectedCountry,
 };
 
-export default connect(null, mapDispatchToProps)(Countries);
+export default connect(mapStateToProps, mapDispatchToProps)(Countries);

@@ -9,6 +9,7 @@ export const SORT_COUNTRIES_DESCENDING = 'SORT_COUNTRIES_DESCENDING';
 export const SORT_POPULATION = 'SORT_POPULATION'
 export const SORT_POPULATION_DESCENDING = 'SORT_POPULATION_DESCENDING'
 export const SET_SELECTED_COUNTRY = 'SET_SELECTED_COUNTRY';
+export const SET_SELECTED_CONTINENT = 'SET_SELECTED_CONTINENT';
 
 
 
@@ -67,5 +68,9 @@ export function sortPopulationDescending() {
 }
 
 export function setSelectedCountry(country) {
-  return { type: SET_SELECTED_COUNTRY, country };
+  return { type: SET_SELECTED_COUNTRY, payload: country };
+}
+
+export function setSelectedContinent(continent) {
+  return { type: SET_SELECTED_CONTINENT, payload: continent }
 }
