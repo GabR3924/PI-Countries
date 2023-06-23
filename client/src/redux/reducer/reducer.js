@@ -4,7 +4,8 @@ const initialState = {
   countries: [],
   page: 0,
   itemsPerPage: 10,
-  selectedCountry: null
+  selectedCountry: null,
+  selectedContinent: "All"
 };
 
 const reducer = (state = initialState, action) => {

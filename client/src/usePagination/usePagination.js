@@ -5,13 +5,17 @@ import { getCountries, setPage } from "../redux/actions/actions";
 function usePagination() {
   const dispatch = useDispatch();
   const countries = useSelector((state) => state.countries);
-  const page = useSelector((state) => state.page)
+  const selectedContinent = useSelector((state) => state.selectedContinent);
+  const filteredCountries = countries.filter(
+    (country) =>
+      selectedContinent === "All" || country.continent === selectedContinent
+  );
+  const page = useSelector((state) => state.page);
   const itemsPerPage = useSelector((state) => state.itemsPerPage);
   const startIndex = page * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const visibleCountries = countries.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(countries.length / itemsPerPage);
-
+  const visibleCountries = filteredCountries.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(filteredCountries.length / itemsPerPage);
 
   useEffect(() => {
     dispatch(getCountries());

@@ -22,13 +22,14 @@ const Countries = ({
   sortPopulationDescending,
   setSelectedCountry,
   selectedContinent,
-  visibleCountries
+  
 }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const {
+    visibleCountries,
     page,
     totalPages,
     handleNextPage,
