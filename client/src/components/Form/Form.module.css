@@ -1,0 +1,9 @@
+.form{
+    height: 15rem;
+    width: 10rem;
+    border: 2px solid white;
+    display: grid;
+    grid-template-columns:repeat(1);
+    padding: 2rem;
+    gap: 1rem;
+}
