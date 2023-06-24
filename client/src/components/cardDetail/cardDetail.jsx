@@ -11,7 +11,7 @@ const CardDetail = ({ country }) => {
       <h3> subregion:{ country.subregion}</h3>
       <h3>area: {country.area}</h3>
       <p>Población: {country.population}</p>
-      <button><Link to='/new/activitie'>Actividades</Link></button>
+      <button><Link to='/activities'>Actividades</Link></button>
     </div>
   )
 }
