@@ -1,4 +1,5 @@
 const axios = require("axios");
+const { Country } = require('../db.js'); // Asegúrate de importar el modelo Country
 
 const getAll = async () => {
   const response = await axios.get(`http://localhost:5000/countries`);
@@ -6,15 +7,22 @@ const getAll = async () => {
 
   const result = countries.map((country) => ({
     name: country.name.official,
-    flag: country.flags.svg,
-    continent: country.region,
+    imagen: country.flags.svg,
+    continente: country.region,
     capital: country.capital,
     subregion: country.subregion,
     area: country.area,
-    population: country.population
+    poblacion: country.population
   }));
 
-  return result;
+  
+  // await Country.bulkCreate(result);
+
+  // const countriesDb = await Country.findAll()
+
+  // console.log('countriesDb', countriesDb)
+  // return {result: countriesDb};
+  return result
 };
 
 module.exports = getAll;

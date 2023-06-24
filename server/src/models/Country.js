@@ -1,13 +1,23 @@
-const { DataTypes, Sequelize } = require('sequelize');
+const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
+
+function generateId() {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  for (let i = 0; i < 3; i++) {
+    result += characters.charAt(Math.floor(Math.random() * characters.length));
+  }
+  return result;
+}
+
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('Country', {
-    id:{
-      type: DataTypes.UUID,
+  sequelize.define('countries', {
+    id: {
+      type: DataTypes.STRING,
       primaryKey: true,
-      defaultValue: Sequelize.UUIDV4
+      defaultValue: generateId
     },
     name: {
       type: DataTypes.STRING,

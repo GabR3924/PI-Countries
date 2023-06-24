@@ -71,7 +71,7 @@ const Countries = ({
             <Card
               key={country.id}
               name={country.name}
-              flag={country.flag}
+              flag={country.imagen}
               continent={country.continent}
               onClick={() => handleCountryClick(country)}
             />
