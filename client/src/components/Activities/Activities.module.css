@@ -1,0 +1,4 @@
+.activities{
+    display: grid;
+    grid-template-columns: repeat(4, 2fr);
+}

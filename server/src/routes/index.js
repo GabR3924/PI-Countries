@@ -1,10 +1,12 @@
 const { Router } = require("express");
-const {getAllController, createA} = require("../controllers/responseController");
+const {getAllController, getActivitiesController, createActivitieController} = require("../controllers/responseController");
 
 const router = Router();
 
 router.get('/countries', getAllController)
 
-router.post('/new/activity', createA)
+router.get('/activities', getActivitiesController)
+
+router.post('/new/activity', createActivitieController)
 
 module.exports = router;

@@ -10,6 +10,8 @@ export const SORT_POPULATION = 'SORT_POPULATION'
 export const SORT_POPULATION_DESCENDING = 'SORT_POPULATION_DESCENDING'
 export const SET_SELECTED_COUNTRY = 'SET_SELECTED_COUNTRY';
 export const SET_SELECTED_CONTINENT = 'SET_SELECTED_CONTINENT';
+export const GET_ACTIVITIES = 'GET_ACTIVITIES'
+export const POST_ACTIVITY = 'POST_ACTIVITY'
 
 
 
@@ -73,4 +75,11 @@ export function setSelectedCountry(country) {
 
 export function setSelectedContinent(continent) {
   return { type: SET_SELECTED_CONTINENT, payload: continent }
+}
+
+export function getActivities(){
+  return async (dispatch) => {
+    const res = await axios.get ("http://localhost:3001/activities");
+    dispatch({ type:GET_ACTIVITIES, payload: res.data.data })
+}
 }

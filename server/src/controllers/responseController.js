@@ -1,5 +1,5 @@
 const getAll = require('../handlers/getAll.js')
-const createActivitie = require('../handlers/crudActivities.js')
+const { getActivities, createActivitie} = require('../handlers/crudActivities.js')
 
 const getAllController = async (req, res, next) => {
     try {
@@ -10,7 +10,18 @@ const getAllController = async (req, res, next) => {
     }
 }
 
-const createA = async (req, res, next) => {
+const getActivitiesController = async (req, res, next) => {
+    try {
+        const dbActivities = await getActivities();
+    
+        res.json(dbActivities);
+        
+    } catch (error) {
+       next(error) 
+    }
+}
+
+const createActivitieController = async (req, res, next) => {
     const { name, dificultad, duracion, temporada } = req.body
 
     console.log('form', name, dificultad, duracion, temporada)
@@ -23,4 +34,4 @@ const createA = async (req, res, next) => {
     }
 }
 
-module.exports = {getAllController, createA}
+module.exports = {getAllController, getActivitiesController, createActivitieController}
