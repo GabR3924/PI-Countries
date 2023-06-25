@@ -5,3 +5,5 @@ const createActivitie = async (name, dificultad, duracion, temporada) => {
 
   return { data: newActivitie };
 };
+
+module.exports = createActivitie

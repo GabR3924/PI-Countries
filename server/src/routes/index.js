@@ -5,6 +5,6 @@ const router = Router();
 
 router.get('/countries', getAllController)
 
-router.post('/new.activity', createA)
+router.post('/new/activity', createA)
 
 module.exports = router;

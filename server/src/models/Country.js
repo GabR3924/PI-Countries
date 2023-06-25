@@ -13,7 +13,7 @@ function generateId() {
 
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('countries', {
+  sequelize.define('Country', {
     id: {
       type: DataTypes.STRING,
       primaryKey: true,
