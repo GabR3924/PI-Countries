@@ -2,26 +2,17 @@ const { DataTypes } = require('sequelize');
 // Exportamos una funcion que define el modelo
 // Luego le injectamos la conexion a sequelize.
 
-function generateId() {
-  let result = '';
-  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  for (let i = 0; i < 3; i++) {
-    result += characters.charAt(Math.floor(Math.random() * characters.length));
-  }
-  return result;
-}
-
 module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('Country', {
     id: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       primaryKey: true,
-      defaultValue: generateId
-    },
+      autoIncrement: true
+  },
     name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     imagen: {
       type:DataTypes.STRING,
@@ -33,11 +24,11 @@ module.exports = (sequelize) => {
     },
     capital: {
       type:DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     subregion: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     area: {
       type: DataTypes.INTEGER,
@@ -51,3 +42,21 @@ module.exports = (sequelize) => {
     timestamps: false
 });
 };
+
+
+
+
+
+
+
+
+
+
+// function generateId() {
+//   let result = '';
+//   const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+//   for (let i = 0; i < 3; i++) {
+//     result += characters.charAt(Math.floor(Math.random() * characters.length));
+//   }
+//   return result;
+// }

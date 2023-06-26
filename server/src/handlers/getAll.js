@@ -20,8 +20,8 @@ const getAll = async () => {
 
   const countriesDb = await Country.findAll()
 
-  console.log('countriesDb', countriesDb)
-  return {result: countriesDb};
+  // console.log('countriesDb', countriesDb)
+  return countriesDb;
 };
 
 module.exports = getAll;
