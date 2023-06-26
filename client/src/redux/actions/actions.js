@@ -12,7 +12,8 @@ export const SET_SELECTED_COUNTRY = 'SET_SELECTED_COUNTRY';
 export const SET_SELECTED_CONTINENT = 'SET_SELECTED_CONTINENT';
 export const GET_ACTIVITIES = 'GET_ACTIVITIES'
 export const POST_ACTIVITY = 'POST_ACTIVITY'
-
+export const SET_ERROR = 'SET_ERROR'
+export const VALIDATE_FORM ='VALIDATE_FORM'
 
 
 export function getCountries() {
@@ -90,3 +91,24 @@ export function postActivity(data){
     dispatch({ type:POST_ACTIVITY, payload: res.data })
 }
 }
+
+export const setError = (error) => ({
+  type: 'SET_ERROR',
+  payload: error
+});
+
+export const validateForm = (data) => {
+  if (!data.name) {
+    return { type: 'SET_ERROR', payload: 'El campo nombre es obligatorio' };
+  }
+  if (!data.dificultad) {
+    return { type: 'SET_ERROR', payload: 'El campo dificultad es obligatorio' };
+  }
+  if (!data.duracion) {
+    return { type: 'SET_ERROR', payload: 'El campo duracion es obligatorio' };
+  }
+  if (!data.temporada) {
+    return { type: 'SET_ERROR', payload: 'El campo temporada es obligatorio' };
+  }
+  return { type: 'SET_ERROR', payload: '' };
+};

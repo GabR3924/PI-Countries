@@ -16,13 +16,12 @@ const getAll = async () => {
   }));
 
   
-  // await Country.bulkCreate(result);
+  await Country.bulkCreate(result);
 
-  // const countriesDb = await Country.findAll()
+  const countriesDb = await Country.findAll()
 
-  // console.log('countriesDb', countriesDb)
-  // return {result: countriesDb};
-  return result
+  console.log('countriesDb', countriesDb)
+  return {result: countriesDb};
 };
 
 module.exports = getAll;

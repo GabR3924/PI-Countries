@@ -11,6 +11,8 @@ import {
   SET_SELECTED_CONTINENT,
   GET_ACTIVITIES,
   POST_ACTIVITY,
+  SET_ERROR,
+  VALIDATE_FORM
 } from "../actions/actions";
 
 const initialState = {
@@ -20,6 +22,7 @@ const initialState = {
   selectedCountry: null,
   selectedContinent: "All",
   activities: [],
+  error: ''
 };
 
 const reducer = (state = initialState, action) => {
@@ -89,6 +92,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         activities: action.payload,
       };
+      case SET_ERROR:
+        return {
+          ...state,
+          error: action.payload
+        }
+    
     default:
       return state;
   }

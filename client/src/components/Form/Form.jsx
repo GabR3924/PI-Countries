@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import style from './Form.module.css';
-import { postActivity } from '../../redux/actions/actions';
+import { postActivity, validateForm } from '../../redux/actions/actions';
 
 const Form = () => {
   const dispatch = useDispatch();
@@ -9,6 +9,7 @@ const Form = () => {
   const [dificultad, setDificultad] = useState('');
   const [duracion, setDuracion] = useState('');
   const [temporada, setTemporada] = useState('');
+  const error = useSelector((state) => state.error);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -18,8 +19,13 @@ const Form = () => {
       duracion,
       temporada,
     };
+    dispatch(validateForm(data));
+    if (error) {
+      return;
+    }
     dispatch(postActivity(data));
   };
+  
 
   return (
     <div>
@@ -51,6 +57,8 @@ const Form = () => {
         <div>paises</div>
         <button>Enviar</button>
       </form>
+      {error && <div>{error}</div>}
+
     </div>
   );
 };
