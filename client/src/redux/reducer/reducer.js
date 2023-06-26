@@ -1,4 +1,17 @@
-import { GET_COUNTRIES, SET_PAGE,NEXT_PAGE, PREV_PAGE, SORT_COUNTRIES, SORT_COUNTRIES_DESCENDING, SORT_POPULATION, SORT_POPULATION_DESCENDING,SET_SELECTED_COUNTRY, SET_SELECTED_CONTINENT, GET_ACTIVITIES } from "../actions/actions";
+import {
+  GET_COUNTRIES,
+  SET_PAGE,
+  NEXT_PAGE,
+  PREV_PAGE,
+  SORT_COUNTRIES,
+  SORT_COUNTRIES_DESCENDING,
+  SORT_POPULATION,
+  SORT_POPULATION_DESCENDING,
+  SET_SELECTED_COUNTRY,
+  SET_SELECTED_CONTINENT,
+  GET_ACTIVITIES,
+  POST_ACTIVITY,
+} from "../actions/actions";
 
 const initialState = {
   countries: [],
@@ -6,7 +19,7 @@ const initialState = {
   itemsPerPage: 10,
   selectedCountry: null,
   selectedContinent: "All",
-  activities: []
+  activities: [],
 };
 
 const reducer = (state = initialState, action) => {
@@ -47,35 +60,38 @@ const reducer = (state = initialState, action) => {
     case SORT_POPULATION: {
       return {
         ...state,
-        countries:action.payload
-      }
+        countries: action.payload,
+      };
     }
     case SORT_POPULATION_DESCENDING: {
       return {
         ...state,
-        countries:action.payload
-      }
+        countries: action.payload,
+      };
     }
     case SET_SELECTED_COUNTRY:
       return {
         ...state,
-        selectedCountry: action.payload
-    };
+        selectedCountry: action.payload,
+      };
     case SET_SELECTED_CONTINENT:
       return {
         ...state,
-        selectedContinent: action.payload
-      }
-      case GET_ACTIVITIES:
-        return {
-          ...state,
-          activities: action.payload,
-        };
-
+        selectedContinent: action.payload,
+      };
+    case GET_ACTIVITIES:
+      return {
+        ...state,
+        activities: action.payload,
+      };
+    case POST_ACTIVITY:
+      return {
+        ...state,
+        activities: action.payload,
+      };
     default:
       return state;
   }
 };
-
 
 export default reducer;

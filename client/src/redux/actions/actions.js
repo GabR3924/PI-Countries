@@ -83,3 +83,10 @@ export function getActivities(){
     dispatch({ type:GET_ACTIVITIES, payload: res.data.data })
 }
 }
+
+export function postActivity(data){
+  return async (dispatch) => {
+    const res = await axios.post("http://localhost:3001/new/activity", data);
+    dispatch({ type:POST_ACTIVITY, payload: res.data })
+}
+}
