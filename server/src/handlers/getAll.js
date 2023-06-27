@@ -1,7 +1,7 @@
 const axios = require("axios");
 const { Country } = require('../db.js'); // Asegúrate de importar el modelo Country
 
-const getAll = async () => {
+const getAll = async (name) => {
   // Verificar si ya hay datos en la tabla Country
   const count = await Country.count();
   if (count === 0) {
@@ -24,9 +24,14 @@ const getAll = async () => {
   }
 
   // Obtener los datos de la base de datos
-  const countriesDb = await Country.findAll()
+  let countriesDb = await Country.findAll()
+
+  if (name) {
+    countriesDb = countriesDb.filter((country) => country.name === name);
+  }
 
   return countriesDb;
 };
+
 
 module.exports = getAll;

@@ -58,7 +58,7 @@ export function sortCountriesDescending() {
 export function sortPopulation() {
   return (dispatch, getState) => {
       const data = [...getState().countries];
-      const sortedData = data.sort((a, b) => b.population - a.population);
+      const sortedData = data.sort((a, b) => b.poblacion - a.poblacion);
       dispatch({ type:SORT_POPULATION, payload: sortedData });
   }
 }
@@ -66,7 +66,7 @@ export function sortPopulation() {
 export function sortPopulationDescending() {
   return (dispatch, getState) => {
     const data = [...getState().countries];
-    const sortedData = data.sort((a, b) => a.population - b.population);
+    const sortedData = data.sort((a, b) => a.poblacion - b.poblacion);
     dispatch({ type:SORT_POPULATION_DESCENDING, payload: sortedData });
 }
 }
@@ -115,9 +115,9 @@ export const validateForm = (data) => {
 };
 
 export function searchCountry(name) {
-  return (dispatch, getState) => {
+  return async (dispatch, getState) => {
     const data = [...getState().countries];
-    const selectedCountry = data.find((country) => country.name === name);
+    const selectedCountry = await data.find((country) => country.name === name);
     dispatch({ type: SEARCH_COUNTRY, payload: selectedCountry });
   }
 }

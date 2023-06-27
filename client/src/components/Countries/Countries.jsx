@@ -102,6 +102,7 @@ const mapDispatchToProps = {
   sortPopulationDescending,
   setSelectedContinent,
   setSelectedCountry,
+  searchCountry
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Countries);

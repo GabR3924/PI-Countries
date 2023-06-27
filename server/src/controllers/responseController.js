@@ -2,8 +2,10 @@ const getAll = require('../handlers/getAll.js')
 const { getActivities, createActivitie} = require('../handlers/crudActivities.js')
 
 const getAllController = async (req, res, next) => {
+    const { name } = req.query
+    console.log(name)
     try {
-        const countries = await getAll();
+        const countries = await getAll(name);
         res.json(countries)
     } catch (error) {
         next(error)
