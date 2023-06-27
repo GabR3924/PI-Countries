@@ -12,7 +12,7 @@ import {
   GET_ACTIVITIES,
   POST_ACTIVITY,
   SET_ERROR,
-  VALIDATE_FORM
+  SEARCH_COUNTRY
 } from "../actions/actions";
 
 const initialState = {
@@ -97,7 +97,11 @@ const reducer = (state = initialState, action) => {
           ...state,
           error: action.payload
         }
-    
+      case SEARCH_COUNTRY: 
+        return {
+          ...state,
+          countries: action.payload
+        }
     default:
       return state;
   }

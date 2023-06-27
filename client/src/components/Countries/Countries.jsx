@@ -1,39 +1,26 @@
-import React from "react";
+import { useState } from "react";
 import Card from "../Card/Card";
 import style from "./Countries.module.css";
 import { connect, useDispatch } from "react-redux";
 import {
-  sortCountries,
-  sortCountriesDescending,
-  sortPopulation,
-  sortPopulationDescending,
-  setSelectedCountry,
-  setSelectedContinent
+  sortCountries,sortCountriesDescending,sortPopulation,sortPopulationDescending,
+  setSelectedCountry,setSelectedContinent, searchCountry
 } from "../../redux/actions/actions";
 import usePagination from "../../usePagination/usePagination";
 import { useNavigate } from "react-router-dom";
 import { getVisibleCountries } from "../../redux/reducer/selectors";
 
 
-const Countries = ({
-  sortCountries,
-  sortCountriesDescending,
-  sortPopulation,
-  sortPopulationDescending,
-  setSelectedCountry,
-  selectedContinent,
-  
+const Countries = ({sortCountries,sortCountriesDescending,sortPopulation,
+  sortPopulationDescending,setSelectedCountry, searchCountry
 }) => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [searchName, setSearchName] = useState("");
 
-  const {
-    visibleCountries,
-    page,
-    totalPages,
-    handleNextPage,
-    handlePrevPage,
+
+  const {visibleCountries,page,totalPages,handleNextPage,handlePrevPage,
   } = usePagination();
 
   const handleCountryClick = (country) => {
@@ -43,12 +30,22 @@ const Countries = ({
 
   const handleContinentChange = (event) => {
     dispatch(setSelectedContinent(event.target.value));
-    console.log(event)
   };
 
+  const handleSearchChange = (event) => {
+    setSearchName(event.target.value);
+  };
+
+  const handleSearchClick = () => {
+    dispatch(searchCountry(searchName));
+  };
 
   return (
     <div className={style.section}>
+      <div className={style.searchBar}>
+      <input type="text" value={searchName} onChange={handleSearchChange} />
+      <button onClick={handleSearchClick}>Buscar</button>
+      </div>
       <div className={style.filters}>
         <label>
           Continente:

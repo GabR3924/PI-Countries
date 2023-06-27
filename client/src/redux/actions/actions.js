@@ -14,6 +14,7 @@ export const GET_ACTIVITIES = 'GET_ACTIVITIES'
 export const POST_ACTIVITY = 'POST_ACTIVITY'
 export const SET_ERROR = 'SET_ERROR'
 export const VALIDATE_FORM ='VALIDATE_FORM'
+export const SEARCH_COUNTRY = 'SEARCH_COUNTRY';
 
 
 export function getCountries() {
@@ -112,3 +113,11 @@ export const validateForm = (data) => {
   }
   return { type: 'SET_ERROR', payload: '' };
 };
+
+export function searchCountry(name) {
+  return (dispatch, getState) => {
+    const data = [...getState().countries];
+    const selectedCountry = data.find((country) => country.name === name);
+    dispatch({ type: SEARCH_COUNTRY, payload: selectedCountry });
+  }
+}
