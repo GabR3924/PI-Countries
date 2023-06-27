@@ -8,7 +8,7 @@ function usePagination() {
   const selectedContinent = useSelector((state) => state.selectedContinent);
   const filteredCountries = countries.filter(
     (country) =>
-      selectedContinent === "All" || country.continent === selectedContinent
+      selectedContinent === "All" || country.continente === selectedContinent
   );
   const page = useSelector((state) => state.page);
   const itemsPerPage = useSelector((state) => state.itemsPerPage);
@@ -16,6 +16,8 @@ function usePagination() {
   const endIndex = startIndex + itemsPerPage;
   const visibleCountries = filteredCountries.slice(startIndex, endIndex);
   const totalPages = Math.ceil(filteredCountries.length / itemsPerPage);
+
+  console.log("countries", countries)
   
   useEffect(() => {
     dispatch(getCountries());

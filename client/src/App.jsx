@@ -15,7 +15,7 @@ function App() {
         <Route path="/" element={<Countries />} />
         <Route
           path="/detail"
-          element={<CardDetail country={selectedCountry} />}
+          element={<CardDetail country={selectedCountry}/>}
         />
         <Route path="/activities" element={<Activities/>}/>
         <Route path="/new/activity" element={<Form/>}/>

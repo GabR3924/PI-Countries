@@ -43,6 +43,7 @@ const Countries = ({
 
   const handleContinentChange = (event) => {
     dispatch(setSelectedContinent(event.target.value));
+    console.log(event)
   };
 
 
@@ -72,7 +73,7 @@ const Countries = ({
               key={country.id}
               name={country.name}
               flag={country.imagen}
-              continent={country.continent}
+              continent={country.continente}
               onClick={() => handleCountryClick(country)}
             />
           ))}

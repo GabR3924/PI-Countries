@@ -4,4 +4,3 @@ export function getVisibleCountries(state) {
       ? countries.filter((country) => country.continent === selectedContinent)
       : countries;
   }
-  
