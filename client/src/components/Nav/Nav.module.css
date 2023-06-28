@@ -1,0 +1,26 @@
+.section{
+    display: flex;
+    width: 99vw;
+    height: 7vh;
+    border: 2px solid rgb(182, 182, 182);
+    align-items: center;
+    justify-content: space-between;
+    contain: content;
+    margin-left: 2rem;
+    margin-right: 2rem;
+}
+.list ul{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border: 2px solid rgb(182, 182, 182);
+    list-style: none;
+    gap: 2rem;
+}
+
+.gif img{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: 10rem;
+}

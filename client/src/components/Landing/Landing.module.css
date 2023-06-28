@@ -1,12 +1,12 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+.section{
+    display: flex;
+    height: 100vh;
 }
 
 .gif{
     border: 2px solid black;
     display: flex;
+    position: absolute;
    position: absolute;
    margin-left: -28%;
    margin-top: -30%;
