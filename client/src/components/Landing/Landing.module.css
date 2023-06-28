@@ -1,0 +1,14 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.gif{
+    border: 2px solid black;
+    display: flex;
+   position: absolute;
+   margin-left: -28%;
+   margin-top: -30%;
+    padding: .1rem;
+}
