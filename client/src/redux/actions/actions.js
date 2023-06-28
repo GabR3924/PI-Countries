@@ -93,12 +93,12 @@ export function postActivity(data){
 }
 }
 
-export const setError = (error) => ({
-  type: 'SET_ERROR',
-  payload: error
-});
+export function setError (error)  {
+  dispatch({type: SET_ERROR,
+  payload: error})
+};
 
-export const validateForm = (data) => {
+export function validateForm  (data)  {
   if (!data.name) {
     return { type: 'SET_ERROR', payload: 'El campo nombre es obligatorio' };
   }
@@ -114,9 +114,8 @@ export const validateForm = (data) => {
   return { type: 'SET_ERROR', payload: '' };
 };
 
-export const searchCountry = (searchName) => {
+export function searchCountry  (searchName)  {
   return async (dispatch) => {
-    console.log('actions', searchName)
     const res = await axios.get(`http://localhost:3001/countries?name=${searchName}`);
     dispatch({ type: SEARCH_COUNTRY, payload: res.data });
   }

@@ -37,9 +37,10 @@ const Countries = ({sortCountries,sortCountriesDescending,sortPopulation,
     console.log(searchName)
   };
 
-  const handleSearchClick = (searchName) => {
+  const handleSearchClick = () => {
     dispatch(searchCountry(searchName));
-    console.log('envio', searchName)
+    setSearchName("")
+    console.log('limpio', searchName)
   };
 
   return (
