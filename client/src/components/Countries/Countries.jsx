@@ -34,17 +34,19 @@ const Countries = ({sortCountries,sortCountriesDescending,sortPopulation,
 
   const handleSearchChange = (event) => {
     setSearchName(event.target.value);
+    console.log(searchName)
   };
 
-  const handleSearchClick = () => {
+  const handleSearchClick = (searchName) => {
     dispatch(searchCountry(searchName));
+    console.log('envio', searchName)
   };
 
   return (
     <div className={style.section}>
       <div className={style.searchBar}>
       <input type="text" value={searchName} onChange={handleSearchChange} />
-      <button onClick={handleSearchClick}>Buscar</button>
+      <button onClick={() => handleSearchClick(searchName)}>Buscar</button>
       </div>
       <div className={style.filters}>
         <label>

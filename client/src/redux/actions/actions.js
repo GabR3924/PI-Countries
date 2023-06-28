@@ -114,10 +114,10 @@ export const validateForm = (data) => {
   return { type: 'SET_ERROR', payload: '' };
 };
 
-export function searchCountry(name) {
-  return async (dispatch, getState) => {
-    const data = [...getState().countries];
-    const selectedCountry = await data.find((country) => country.name === name);
-    dispatch({ type: SEARCH_COUNTRY, payload: selectedCountry });
+export const searchCountry = (searchName) => {
+  return async (dispatch) => {
+    console.log('actions', searchName)
+    const res = await axios.get(`http://localhost:3001/countries?name=${searchName}`);
+    dispatch({ type: SEARCH_COUNTRY, payload: res.data });
   }
 }
