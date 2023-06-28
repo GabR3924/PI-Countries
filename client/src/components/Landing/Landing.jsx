@@ -9,7 +9,13 @@ const Landinf = () => {
       <div className={style.gif}>
       <img src={earth} alt="...loading" />
       </div>
-      civ.
+      <div className={style.txt}>
+        <h1>Explora <br/> el mundo</h1>
+      </div>
+      <div className={style.btn}>
+          <button>Paises</button>
+          <button>Actividades</button>
+        </div>
       
     </div>
   )

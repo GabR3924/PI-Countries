@@ -2,7 +2,6 @@
     display: flex;
     width: 99vw;
     height: 7vh;
-    border: 2px solid rgb(182, 182, 182);
     align-items: center;
     justify-content: space-between;
     contain: content;
@@ -13,7 +12,6 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    border: 2px solid rgb(182, 182, 182);
     list-style: none;
     gap: 2rem;
 }
@@ -23,4 +21,9 @@
     align-items: center;
     justify-content: flex-start;
     height: 10rem;
+}
+
+.gif .icon{
+    font-size: 2rem;
+    color: green;
 }

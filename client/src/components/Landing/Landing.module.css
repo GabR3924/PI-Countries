@@ -4,11 +4,44 @@
 }
 
 .gif{
-    border: 2px solid black;
     display: flex;
     position: absolute;
-   position: absolute;
    margin-left: -28%;
    margin-top: -30%;
     padding: .1rem;
+}
+
+.txt{
+    display: flex;
+    position: absolute;
+    height: 60%;
+    width: 40%;
+    margin-top: 16%;
+    margin-left: 60%;
+}
+.txt h1{
+    font-size: 7rem;
+    font-family: 'Bebas Neue', sans-serif;
+    background-image:linear-gradient(100deg, rgba(9,121,41,1) 10%, rgba(0,91,255,1) 88%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.btn{
+    display: flex;
+    position: absolute;
+    margin-top: 37%;
+    margin-left: 60%;
+    gap: 1rem;
+}
+
+.btn button{
+    height: 2.5rem;
+    width: 10rem;
+    border: 1px solid rgb(11, 162, 0);
+    border-radius: .6rem;
+    background: none;
+    font-family: 'Teko', sans-serif;
+    font-size: 2rem;
+    font-weight: 400;
 }
