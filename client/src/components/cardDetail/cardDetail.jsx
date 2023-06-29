@@ -1,16 +1,17 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import style from './cardDetail.module.css'
 
 const CardDetail = ({ country }) => {
   return (
-    <div>
-      <h2>{country.name}</h2>
+    <div className={style.content}>
       <img src={country.imagen} alt={`Bandera de ${country.name}`} />
-      <h3> continent: {country.continent}</h3>
-      <h3> capital: {country.capital}</h3>
-      <h3> subregion:{ country.subregion}</h3>
-      <h3>area: {country.area}</h3>
-      <p>Población: {country.population}</p>
+      <p>{country.name}</p>
+      <p>{country.continente}</p>
+      <p> capital<br/>{country.capital}</p>
+      <p> subregion<br/>{ country.subregion}</p>
+      <p>area<br/>{country.area}</p>
+      <p>Población<br/>{country.poblacion}</p>
       <button><Link to='/activities'>Actividades</Link></button>
     </div>
   )
