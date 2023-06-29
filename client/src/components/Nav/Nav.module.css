@@ -1,6 +1,6 @@
 .section{
     display: flex;
-    width: 99vw;
+    width: 100vw;
     height: 7vh;
     align-items: center;
     justify-content: space-between;
