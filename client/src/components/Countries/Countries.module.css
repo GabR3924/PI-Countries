@@ -1,5 +1,5 @@
 .section{
-    height: 150vh;
+    height: 100vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -13,7 +13,7 @@
 .var{
     display: flex;
     flex-direction: column;
-    height: 14%;
+    height: 20%;
     width: 70%;
     background: rgba(221, 222, 221, 0.411);
     align-items: center;
@@ -66,7 +66,7 @@
     font-size: 1.5rem;
     font-weight: 200;
     padding: auto 1rem;
-
+    cursor: pointer;
 }
 
 .filters button{
@@ -80,11 +80,11 @@
     font-size: 1.5rem;
     font-weight: 200;
     color: white;
+    cursor: pointer;
 }
 .cards{
     display: grid;
-    grid-template-columns:repeat(5, 1fr) ;
-    border: 2px solid white
+    grid-template-columns:repeat(5, 6fr) ;
 }
 
 
