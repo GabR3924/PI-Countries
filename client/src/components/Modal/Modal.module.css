@@ -1,0 +1,23 @@
+/* Estilos para la ventana modal */
+.modal {
+    display: flex; /* La ventana modal está oculta por defecto */
+    position: fixed; /* La ventana modal se fija en la pantalla */
+    z-index: 1; /* La ventana modal se muestra por encima del contenido */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    /* overflow: auto; */
+    background-color: rgba(0,0,0,0.4); /* Fondo semitransparente */
+    contain: content;
+  }
+
+  .content {
+    padding: 1rem;
+    background-color: #fefefe;
+    border-top-left-radius: 5rem;
+    margin-left: 60%;
+    height: 100%;
+    width: 40%; 
+  }
+  
