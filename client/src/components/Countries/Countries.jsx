@@ -14,6 +14,7 @@ import {
 import usePagination from "../../usePagination/usePagination";
 import { useNavigate } from "react-router-dom";
 import { getVisibleCountries } from "../../redux/reducer/selectors";
+import { BiSearchAlt } from 'react-icons/bi'
 
 const Countries = ({
   sortCountries,
@@ -55,11 +56,10 @@ const Countries = ({
       <div className={style.var}>
       <div className={style.searchBar}>
         <input type="text" value={searchName} onChange={handleSearchChange} />
-        <button onClick={() => handleSearchClick(searchName)}>Buscar</button>
+        <button onClick={() => handleSearchClick(searchName)}><BiSearchAlt/></button>
       </div>
       <div className={style.filters}>
         <label>
-          Continente:
           <select onChange={handleContinentChange}>
             <option value="All">Todos</option>
             <option value="Africa">África</option>
