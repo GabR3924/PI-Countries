@@ -8,18 +8,19 @@ import Form from "./components/Form/Form";
 import { useSelector } from "react-redux";
 
 function App() {
-  const selectedCountry = useSelector((state) => state.selectedCountry);
+  // const selectedCountry = useSelector((state) => state.selectedCountry);
 
   return (
     <>
       <Routes>
         <Route path="/*" element={<Landing />}>
-          <Route path="countries" element={<Countries />} />
+          <Route path="countries/*" element={<Countries />}>
+          </Route>
         </Route>
         <Route
-          path="/detail"
-          element={<CardDetail country={selectedCountry} />}
-        />
+              path="detail/*"
+              element={<CardDetail />}
+            />
         <Route path="/activities" element={<Activities />} />
         <Route path="/new/activity" element={<Form />} />
       </Routes>

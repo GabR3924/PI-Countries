@@ -12,9 +12,12 @@ import {
   searchCountry,
 } from "../../redux/actions/actions";
 import usePagination from "../../usePagination/usePagination";
-import { useNavigate } from "react-router-dom";
 import { getVisibleCountries } from "../../redux/reducer/selectors";
 import { BiSearchAlt } from 'react-icons/bi'
+import Modal from "../Modal/Modal";
+import CardDetail from "../cardDetail/cardDetail";
+import { useSelector } from "react-redux";
+
 
 const Countries = ({
   sortCountries,
@@ -25,15 +28,18 @@ const Countries = ({
   searchCountry,
 }) => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [searchName, setSearchName] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const selectedCountry = useSelector((state) => state.selectedCountry);
+
+
 
   const { visibleCountries, page, totalPages, handleNextPage, handlePrevPage } =
     usePagination();
 
   const handleCountryClick = (country) => {
     dispatch(setSelectedCountry(country));
-    navigate("/detail");
+    setShowModal(true)
   };
 
   const handleContinentChange = (event) => {
@@ -80,6 +86,7 @@ const Countries = ({
           visibleCountries.map((country) => (
             <Card
               key={country.id}
+              id={country.id}
               name={country.name}
               flag={country.imagen}
               continent={country.continente}
@@ -89,15 +96,22 @@ const Countries = ({
       </div>
       <div className={style.buttons}>
         <p>
-          Página {page + 1} de {totalPages}
+           {page + 1} de {totalPages}
         </p>
+        <div className={style.btn}>
         <button onClick={handlePrevPage} disabled={page === 0}>
           Anterior
         </button>
         <button onClick={handleNextPage} disabled={page === totalPages - 1}>
           Siguiente
         </button>
+        </div>
       </div>
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <CardDetail country={selectedCountry} />
+        </Modal>
+      )}
     </div>
   );
 };
