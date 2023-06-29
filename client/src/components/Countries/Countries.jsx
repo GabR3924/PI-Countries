@@ -3,25 +3,32 @@ import Card from "../Card/Card";
 import style from "./Countries.module.css";
 import { connect, useDispatch } from "react-redux";
 import {
-  sortCountries,sortCountriesDescending,sortPopulation,sortPopulationDescending,
-  setSelectedCountry,setSelectedContinent, searchCountry
+  sortCountries,
+  sortCountriesDescending,
+  sortPopulation,
+  sortPopulationDescending,
+  setSelectedCountry,
+  setSelectedContinent,
+  searchCountry,
 } from "../../redux/actions/actions";
 import usePagination from "../../usePagination/usePagination";
 import { useNavigate } from "react-router-dom";
 import { getVisibleCountries } from "../../redux/reducer/selectors";
 
-
-const Countries = ({sortCountries,sortCountriesDescending,sortPopulation,
-  sortPopulationDescending,setSelectedCountry, searchCountry
+const Countries = ({
+  sortCountries,
+  sortCountriesDescending,
+  sortPopulation,
+  sortPopulationDescending,
+  setSelectedCountry,
+  searchCountry,
 }) => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [searchName, setSearchName] = useState("");
 
-
-  const {visibleCountries,page,totalPages,handleNextPage,handlePrevPage,
-  } = usePagination();
+  const { visibleCountries, page, totalPages, handleNextPage, handlePrevPage } =
+    usePagination();
 
   const handleCountryClick = (country) => {
     dispatch(setSelectedCountry(country));
@@ -34,20 +41,21 @@ const Countries = ({sortCountries,sortCountriesDescending,sortPopulation,
 
   const handleSearchChange = (event) => {
     setSearchName(event.target.value);
-    console.log(searchName)
+    console.log(searchName);
   };
 
   const handleSearchClick = () => {
     dispatch(searchCountry(searchName));
-    setSearchName("")
-    console.log('limpio', searchName)
+    setSearchName("");
+    console.log("limpio", searchName);
   };
 
   return (
     <div className={style.section}>
+      <div className={style.var}>
       <div className={style.searchBar}>
-      <input type="text" value={searchName} onChange={handleSearchChange} />
-      <button onClick={() => handleSearchClick(searchName)}>Buscar</button>
+        <input type="text" value={searchName} onChange={handleSearchChange} />
+        <button onClick={() => handleSearchClick(searchName)}>Buscar</button>
       </div>
       <div className={style.filters}>
         <label>
@@ -66,6 +74,7 @@ const Countries = ({sortCountries,sortCountriesDescending,sortPopulation,
         <button onClick={sortPopulation}>poblacion +</button>
         <button onClick={sortPopulationDescending}>poblacion -</button>
       </div>
+      </div>
       <div className={style.cards}>
         {visibleCountries &&
           visibleCountries.map((country) => (
@@ -77,7 +86,6 @@ const Countries = ({sortCountries,sortCountriesDescending,sortPopulation,
               onClick={() => handleCountryClick(country)}
             />
           ))}
-          
       </div>
       <div className={style.buttons}>
         <p>
@@ -105,7 +113,7 @@ const mapDispatchToProps = {
   sortPopulationDescending,
   setSelectedContinent,
   setSelectedCountry,
-  searchCountry
+  searchCountry,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Countries);
