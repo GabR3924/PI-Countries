@@ -35,11 +35,11 @@ const getActivitiesController = async (req, res, next) => {
 }
 
 const createActivitieController = async (req, res, next) => {
-    const { name, dificultad, duracion, temporada } = req.body
+    const { name, dificultad, duracion, temporada, countryId } = req.body
 
-    console.log('form', name, dificultad, duracion, temporada)
+    console.log('form', name, dificultad, duracion, temporada, countryId)
     try {
-        const create = await createActivitie(name, dificultad, duracion, temporada )
+        const create = await createActivitie(name, dificultad, duracion, temporada, countryId )
 
         res.json(create)
     } catch (error) {

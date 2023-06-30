@@ -1,16 +1,21 @@
-const { Activity } = require("../db.js");
+const { Activity, Country } = require("../db.js");
 
 const getActivities = async () => {
-  const activities = await Activity.findAll();
-  console.log(activities)
-  return { data: activities }
-}
+  const activities = await Activity.findAll({
+    include: { model: Country, as: 'countries' },
+  });
 
-const createActivitie = async (name, dificultad, duracion, temporada) => {
-  const newActivitie = await Activity.create({name, dificultad, duracion, temporada});
+  return { data: activities };
+};
 
+
+const createActivitie = async (name, dificultad, duracion, temporada, countryId) => {
+  const newActivitie = await Activity.create({ name, dificultad, duracion, temporada });
+  const country = await Country.findByPk(countryId);
+  await newActivitie.addCountry(country);
   return { data: newActivitie };
 };
+
 
 const deleteActivie = async (id) =>  {
   await Activity.destroy({
