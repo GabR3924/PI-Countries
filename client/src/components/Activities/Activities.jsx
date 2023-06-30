@@ -36,7 +36,7 @@ const Activities = () => {
         {/* <Link to="/new/activity"> */}
         <button onClick={() => setIsModalOpen(true)}>Crear</button>
         {isModalOpen && (
-        <Modal onClose={() => setShowModal(false)}>
+        <Modal onClose={() => setIsModalOpen(false)}>
           <Form />
         </Modal>)}
 
