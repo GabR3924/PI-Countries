@@ -7,7 +7,6 @@ const Nav = () => {
   return (
     <div className={style.section}>
       <div className={style.gif}>
-        {/* <img src={logo} alt="" /> */}
         <FiMapPin className={style.icon}/>
       </div>
       <div className={style.list}>

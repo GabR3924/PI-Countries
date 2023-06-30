@@ -1,10 +1,36 @@
 .section{
-    display: grid;
-    width: 100vw;
-    contain: content;
+    padding: 1rem;
 }
 
-.activities{
+.home{
     display: grid;
-    grid-template-columns: repeat(4, 2fr);
+    width: 98vw;
+    height: 10vh;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    justify-content: space-between;
+    gap: 4rem;
+}
+
+.gif img{
+    height: 5rem;
+}
+
+.list{
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 1rem;
+}
+
+.list ul li{
+    list-style: none;
+
+}
+
+.list ul li a{
+    font-family: 'Teko', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 200;
+    text-decoration: none;
+    color: black;
 }
