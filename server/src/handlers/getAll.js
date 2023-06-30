@@ -1,5 +1,5 @@
 const axios = require("axios");
-const { Country } = require('../db.js'); // Asegúrate de importar el modelo Country
+const { Country } = require('../db.js'); 
 
 const getAll = async (name) => {
   // Verificar si ya hay datos en la tabla Country
@@ -19,11 +19,9 @@ const getAll = async (name) => {
       poblacion: country.population
     }));
 
-    // Insertar los datos en la base de datos
     await Country.bulkCreate(result);
   }
 
-  // Obtener los datos de la base de datos
   let countriesDb = await Country.findAll()
 
   if (name) {

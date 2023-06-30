@@ -12,6 +12,16 @@ const getAllController = async (req, res, next) => {
     }
 }
 
+const getByIdController = async (req, res, next) => {
+    const { id } = req.params;
+    try {
+      const country = await getById(id);
+      res.json(country);
+    } catch (error) {
+      next(error);
+    }
+  }
+
 const getActivitiesController = async (req, res, next) => {
     try {
         const dbActivities = await getActivities();
@@ -36,4 +46,4 @@ const createActivitieController = async (req, res, next) => {
     }
 }
 
-module.exports = {getAllController, getActivitiesController, createActivitieController}
+module.exports = {getAllController, getActivitiesController, createActivitieController, getByIdController}
