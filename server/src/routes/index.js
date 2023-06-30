@@ -5,7 +5,7 @@ const router = Router();
 
 router.get('/countries', getAllController)
 
-router.get('/pokemon/:id', getByIdController )
+router.get('/countries/:id', getByIdController )
 
 router.get('/activities', getActivitiesController)
 

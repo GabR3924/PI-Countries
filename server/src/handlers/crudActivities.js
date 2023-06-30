@@ -12,4 +12,11 @@ const createActivitie = async (name, dificultad, duracion, temporada) => {
   return { data: newActivitie };
 };
 
-module.exports = { getActivities, createActivitie }
+const deleteActivie = async (id) =>  {
+  await Activity.destroy({
+    where: { id }
+  });
+  return { message: 'Activity deleted successfully' };
+}
+
+module.exports = { getActivities, createActivitie, deleteActivie }

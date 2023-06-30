@@ -1,5 +1,6 @@
 const getAll = require('../handlers/getAll.js')
-const { getActivities, createActivitie} = require('../handlers/crudActivities.js')
+const { getActivities, createActivitie, deleteActivie} = require('../handlers/crudActivities.js')
+const getById =require('../handlers/getById.js')
 
 const getAllController = async (req, res, next) => {
     const { name } = req.query
@@ -46,4 +47,15 @@ const createActivitieController = async (req, res, next) => {
     }
 }
 
-module.exports = {getAllController, getActivitiesController, createActivitieController, getByIdController}
+const deleteActivieController = async (req, res, next) => {
+    const { id } = req.params;
+  try {
+    const response = await deleteActivie(id);
+    res.json(response);
+  } catch (error) {
+    next(error);
+  }
+
+}
+
+module.exports = {getAllController, getActivitiesController, createActivitieController, getByIdController, deleteActivieController}
