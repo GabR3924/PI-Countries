@@ -6,7 +6,8 @@ import { getActivities } from "../../redux/actions/actions";
 import CarActivity from "../cardActivity/cardActivity";
 import style from "./Activities.module.css";
 import logo from "../../assets/world.gif";
-import Modal from '../Modal/Modal'
+import Modal from "../Modal/Modal";
+import Form from "../Form/Form";
 
 const Activities = () => {
   const dispatch = useDispatch();
@@ -21,20 +22,25 @@ const Activities = () => {
     <div className={style.section}>
       <div className={style.home}>
         <div className={style.gif}>
-        <img src={logo} alt="" />
+          <img src={logo} alt="" />
         </div>
         <div className={style.list}>
           <ul>
-            <li><Link to='/'>Home</Link></li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
           </ul>
         </div>
       </div>
       <div className={style.activities}>
-      {/* <Link to="/new/activity"> */}
-      <button onClick={() => setIsModalOpen(true)}>Crear</button>
-{isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+        {/* <Link to="/new/activity"> */}
+        <button onClick={() => setIsModalOpen(true)}>Crear</button>
+        {isModalOpen && (
+        <Modal onClose={() => setShowModal(false)}>
+          <Form />
+        </Modal>)}
 
-      {/* </Link> */}
+        {/* </Link> */}
         {Array.isArray(activities) &&
           activities.map((activity) => (
             <CarActivity

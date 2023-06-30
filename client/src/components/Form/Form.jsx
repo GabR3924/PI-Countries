@@ -29,16 +29,10 @@ const Form = () => {
     dispatch(postActivity(data));
     navigate('/activities');
 
-  };
-
-  // const handleChange = () => {
-  //   navigate('/activities');
-
-  // }
-  
+  };  
 
   return (
-    <div>
+    <div className={style.section}>
       <form className={style.form} onSubmit={handleSubmit}>
         <input
           type="text"
