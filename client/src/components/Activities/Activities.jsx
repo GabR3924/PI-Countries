@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 ("react-router-dom");
 import { getActivities } from "../../redux/actions/actions";
 import CarActivity from "../cardActivity/cardActivity";
 import style from "./Activities.module.css";
 import logo from "../../assets/world.gif";
+import Modal from '../Modal/Modal'
 
 const Activities = () => {
   const dispatch = useDispatch();
-
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const activities = useSelector((state) => state.activities);
 
   useEffect(() => {
@@ -29,10 +30,12 @@ const Activities = () => {
         </div>
       </div>
       <div className={style.activities}>
-      <button>
-        <Link to="/new/activity">Crear</Link>
-      </button>
-        {activities &&
+      {/* <Link to="/new/activity"> */}
+      <button onClick={() => setIsModalOpen(true)}>Crear</button>
+{isModalOpen && <Modal onClose={() => setIsModalOpen(false)} />}
+
+      {/* </Link> */}
+        {Array.isArray(activities) &&
           activities.map((activity) => (
             <CarActivity
               key={activity.id}

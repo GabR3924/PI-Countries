@@ -2,9 +2,12 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import style from './Form.module.css';
 import { postActivity, validateForm } from '../../redux/actions/actions';
+import { useNavigate } from 'react-router-dom';
+
 
 const Form = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   const [name, setName] = useState('');
   const [dificultad, setDificultad] = useState('');
   const [duracion, setDuracion] = useState('');
@@ -24,7 +27,14 @@ const Form = () => {
       return;
     }
     dispatch(postActivity(data));
+    navigate('/activities');
+
   };
+
+  // const handleChange = () => {
+  //   navigate('/activities');
+
+  // }
   
 
   return (
@@ -55,7 +65,7 @@ const Form = () => {
           onChange={(event) => setTemporada(event.target.value)}
         />
         <div>paises</div>
-        <button>Enviar</button>
+        <button type="submit">Enviar</button>
       </form>
       {error && <div>{error}</div>}
 
