@@ -12,10 +12,7 @@ const Nav = () => {
       </div>
       <div className={style.list}>
         <ul>
-          <li>Paises</li>
-          <li>Actividades</li>
-          <li>Log in</li>
-          <li>Sing in</li>
+          <li>Home</li>
         </ul>
       </div>
     </div>

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getActivities } from '../../redux/actions/actions'
 import CarActivity from '../cardActivity/cardActivity'
 import style from './Activities.module.css'
+import Nav from '../Nav/Nav'
 
 const Activities = () => {
   const dispatch = useDispatch();
@@ -16,7 +17,8 @@ const Activities = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <div className={style.section}>
+      <Nav/>
       <div className={style.activities}>
         {activities && activities.map((activity) => (
           <CarActivity

@@ -1,3 +1,9 @@
+.section{
+    display: grid;
+    width: 100vw;
+    contain: content;
+}
+
 .activities{
     display: grid;
     grid-template-columns: repeat(4, 2fr);

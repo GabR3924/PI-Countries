@@ -1,17 +1,17 @@
 .section{
-    display: flex;
+    display: grid;
     width: 100vw;
     height: 10vh;
     align-items: center;
-    justify-content: space-between;
     contain: content;
     margin-left: 2rem;
     margin-right: 2rem;
+    grid-template-columns: repeat(2, 1fr);
 }
 .list ul{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content:end;
     list-style: none;
     gap: 2rem;
 }
@@ -29,6 +29,8 @@
 }
 
 .gif .icon{
+    align-items: flex-start;
+    justify-content: flex-start;
     font-size: 2rem;
     color: green;
 }
