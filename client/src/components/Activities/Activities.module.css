@@ -34,3 +34,34 @@
     text-decoration: none;
     color: black;
 }
+
+.activities{
+    display: grid;
+    height: 100%;
+    border-radius: .5rem;
+    align-items: center;
+    padding: 1rem;
+    grid-template-columns: repeat(5, 1fr);
+    background: rgba(230, 230, 230, 0.651);
+
+}
+
+.activities button{
+    width: 12rem;
+    height: 14rem;
+    font-size: 1rem;
+    border: none;
+    color: white;
+    border-radius:1rem;
+    padding: 1rem;
+    margin-left: 3rem;
+    background:  rgba(0,91,255,1) ;
+    cursor: pointer;
+}
+
+
+.activities a{
+    text-decoration: none;
+    color: white;
+
+}

@@ -4,5 +4,6 @@
     gap:.5rem;
     padding: 1rem;
     margin: 1rem;
-    border: 2px solid white;
+    background-color: white;
+    border-radius: 1rem;
 }

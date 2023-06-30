@@ -29,6 +29,9 @@ const Activities = () => {
         </div>
       </div>
       <div className={style.activities}>
+      <button>
+        <Link to="/new/activity">Crear</Link>
+      </button>
         {activities &&
           activities.map((activity) => (
             <CarActivity
@@ -40,9 +43,6 @@ const Activities = () => {
             />
           ))}
       </div>
-      <button>
-        <Link to="/new/activity">Crear</Link>
-      </button>
     </div>
   );
 };
