@@ -83,7 +83,6 @@ export function getActivities(){
   return async (dispatch) => {
     const res = await axios.get ("http://localhost:3001/activities");
     dispatch({ type:GET_ACTIVITIES, payload: res.data.data })
-    console.log(res.data.data)
 }
 }
 

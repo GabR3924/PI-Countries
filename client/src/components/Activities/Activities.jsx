@@ -49,6 +49,7 @@ const Activities = () => {
               dificultad={activity.dificultad}
               duracion={activity.duracion}
               temporada={activity.temporada}
+              countries={activity.countries}
             />
           ))}
       </div>
