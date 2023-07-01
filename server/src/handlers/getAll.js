@@ -10,7 +10,7 @@ const getAll = async (name) => {
     const countries = response.data;
 
     const result = countries.map((country) => ({
-      name: country.name.official,
+      name: country.name.common,
       imagen: country.flags.svg,
       continente: country.region,
       capital: country.capital,
