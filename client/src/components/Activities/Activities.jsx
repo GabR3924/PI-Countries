@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 ("react-router-dom");
+import { useParams } from 'react-router-dom';
 import { getActivities } from "../../redux/actions/actions";
 import CarActivity from "../cardActivity/cardActivity";
 import style from "./Activities.module.css";
@@ -10,9 +11,13 @@ import Modal from "../Modal/Modal";
 import Form from "../Form/Form";
 
 const Activities = () => {
+  const { id } = useParams();
+  const countryId = parseInt(id);
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const activities = useSelector((state) => state.activities);
+
+  const filteredActivities = activities.filter(activity => activity.countryId === countryId);
 
   useEffect(() => {
     dispatch(getActivities());
@@ -41,8 +46,8 @@ const Activities = () => {
         </Modal>)}
 
         {/* </Link> */}
-        {Array.isArray(activities) &&
-          activities.map((activity) => (
+        {Array.isArray(filteredActivities) &&
+          filteredActivities.map((activity) => (
             <CarActivity
               key={activity.id}
               name={activity.name}

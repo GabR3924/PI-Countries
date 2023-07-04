@@ -21,7 +21,7 @@ function App() {
               path="detail/*"
               element={<CardDetail />}
             />
-        <Route path="/activities" element={<Activities />} />
+        <Route path="/activities/:id" element={<Activities />} />
         <Route path="/new/activity" element={<Form />} />
       </Routes>
     </>
