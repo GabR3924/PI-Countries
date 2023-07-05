@@ -19,8 +19,12 @@ export const SEARCH_COUNTRY = 'SEARCH_COUNTRY';
 
 export function getCountries() {
     return async (dispatch) => {
-        const res = await axios.get ("http://localhost:3001/countries");
-        dispatch({ type:GET_COUNTRIES, payload: res.data })
+        try {
+            const res = await axios.get ("http://localhost:3001/countries");
+            dispatch({ type:GET_COUNTRIES, payload: res.data })
+        } catch (error) {
+            dispatch(setError(error.message));
+        }
     }
 }
 
@@ -81,15 +85,23 @@ export function setSelectedContinent(continent) {
 
 export function getActivities(){
   return async (dispatch) => {
-    const res = await axios.get ("http://localhost:3001/activities");
-    dispatch({ type:GET_ACTIVITIES, payload: res.data.data })
+    try {
+        const res = await axios.get ("http://localhost:3001/activities");
+        dispatch({ type:GET_ACTIVITIES, payload: res.data.data })
+    } catch (error) {
+        dispatch(setError(error.message));
+    }
 }
 }
 
 export function postActivity(data){
   return async (dispatch) => {
-    const res = await axios.post("http://localhost:3001/new/activity", data);
-    dispatch({ type:POST_ACTIVITY, payload: res.data })
+    try {
+        const res = await axios.post("http://localhost:3001/new/activity", data);
+        dispatch({ type:POST_ACTIVITY, payload: res.data })
+    } catch (error) {
+        dispatch(setError(error.message));
+    }
 }
 }
 
@@ -114,9 +126,13 @@ export function validateForm  (data)  {
   return { type: 'SET_ERROR', payload: '' };
 };
 
-export function searchCountry  (searchName)  {
+export function searchCountry(searchName){
   return async (dispatch) => {
-    const res = await axios.get(`http://localhost:3001/countries?name=${searchName}`);
-    dispatch({ type: SEARCH_COUNTRY, payload: res.data });
+    try{
+        const res = await axios.get(`http://localhost:3001/countries?name=${searchName}`);
+        dispatch({ type: SEARCH_COUNTRY, payload: res.data });
+    } catch(error){
+      return( { type: 'SET_ERROR', payload: 'El campo temporada es obligatorio' });
+    }
   }
 }

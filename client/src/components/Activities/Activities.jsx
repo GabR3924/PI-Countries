@@ -17,7 +17,8 @@ const Activities = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const activities = useSelector((state) => state.activities);
 
-  const filteredActivities = activities.filter(activity => activity.countryId === countryId);
+  const filteredActivities = activities.filter(activity => activity.countries.some(country => country.id === countryId));
+
 
   useEffect(() => {
     dispatch(getActivities());

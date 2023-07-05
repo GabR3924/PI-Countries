@@ -10,11 +10,21 @@ const getActivities = async () => {
 
 
 const createActivitie = async (name, dificultad, duracion, temporada, countryId) => {
+  // Buscar una actividad con el mismo nombre
+  const existingActivitie = await Activity.findOne({ where: { name } });
+
+  // Si ya existe una actividad con el mismo nombre, devolver un mensaje de error
+  if (existingActivitie) {
+    return { error: 'Ya existe una actividad con ese nombre' };
+  }
+
+  // Si no existe una actividad con el mismo nombre, crearla
   const newActivitie = await Activity.create({ name, dificultad, duracion, temporada });
   const country = await Country.findByPk(countryId);
   await newActivitie.addCountry(country);
   return { data: newActivitie };
 };
+
 
 
 const deleteActivie = async (id) =>  {

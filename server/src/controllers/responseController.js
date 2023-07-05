@@ -9,7 +9,7 @@ const getAllController = async (req, res, next) => {
         const countries = await getAll(name);
         res.json(countries)
     } catch (error) {
-        next(error)
+      res.json({ error: error.message });
     }
 }
 

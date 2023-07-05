@@ -81,6 +81,7 @@ const Countries = ({
         <button onClick={sortPopulationDescending}>poblacion -</button>
       </div>
       </div>
+      
       <div className={style.cards}>
         {visibleCountries &&
           visibleCountries.map((country) => (

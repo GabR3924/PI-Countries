@@ -81,7 +81,7 @@ const Form = () => {
 
         <button type="submit">Enviar</button>
       </form>
-      {error && <div>{error}</div>}
+      {error && <p>{error}</p>}
     </div>
   );
 };

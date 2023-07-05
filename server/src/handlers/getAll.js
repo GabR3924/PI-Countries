@@ -28,6 +28,10 @@ const getAll = async (name) => {
     countriesDb = countriesDb.filter((country) => country.name === name);
   }
 
+  if (countriesDb.length === 0) {
+    throw new Error(name ? `No se encontró ningún país con el nombre "${name}"` : 'No se pudieron cargar los países');
+  }
+
   return countriesDb;
 };
 
