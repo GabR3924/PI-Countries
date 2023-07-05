@@ -119,7 +119,7 @@ export function postActivity(data){
         const res = await axios.post("http://localhost:3001/new/activity", data);
         dispatch({ type:POST_ACTIVITY, payload: res.data })
     } catch (error) {
-      return { type: 'SET_ERROR', payload: 'No se pueden repetir los items' };
+      alert(error.message);
     }
 }
 }
