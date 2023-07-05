@@ -119,7 +119,7 @@ export function postActivity(data){
         const res = await axios.post("http://localhost:3001/new/activity", data);
         dispatch({ type:POST_ACTIVITY, payload: res.data })
     } catch (error) {
-      alert(error.message);
+      alert("Ha ocurrido un error al enviar los datos");
     }
 }
 }
