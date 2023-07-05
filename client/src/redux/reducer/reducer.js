@@ -12,7 +12,9 @@ import {
   GET_ACTIVITIES,
   POST_ACTIVITY,
   SET_ERROR,
-  SEARCH_COUNTRY
+  SEARCH_COUNTRY,
+  CACHE_COUNTRIES,
+  CACHE_ACTIVITIES,
 } from "../actions/actions";
 
 const initialState = {
@@ -22,7 +24,8 @@ const initialState = {
   selectedCountry: null,
   selectedContinent: "All",
   activities: [],
-  error: ''
+  error: "",
+  cache: {},
 };
 
 const reducer = (state = initialState, action) => {
@@ -92,16 +95,32 @@ const reducer = (state = initialState, action) => {
         ...state,
         activities: action.payload,
       };
-      case SET_ERROR:
-        return {
-          ...state,
-          error: action.payload
-        }
-      case SEARCH_COUNTRY: 
-        return {
-          ...state,
-          countries: action.payload
-        }
+    case SET_ERROR:
+      return {
+        ...state,
+        error: action.payload,
+      };
+    case SEARCH_COUNTRY:
+      return {
+        ...state,
+        countries: action.payload,
+      };
+    case CACHE_COUNTRIES:
+      return {
+        ...state,
+        cache: {
+          ...state.cache,
+          countries: action.payload,
+        },
+      };
+    case CACHE_ACTIVITIES:
+      return {
+        ...state,
+        cache: {
+          ...state.cache,
+          activities: action.payload,
+        },
+      };
     default:
       return state;
   }

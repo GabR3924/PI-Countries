@@ -15,18 +15,30 @@ export const POST_ACTIVITY = 'POST_ACTIVITY'
 export const SET_ERROR = 'SET_ERROR'
 export const VALIDATE_FORM ='VALIDATE_FORM'
 export const SEARCH_COUNTRY = 'SEARCH_COUNTRY';
+export const CACHE_COUNTRIES = 'CACHE_COUNTRIES'
+export const CACHE_ACTIVITIES = "CACHE_ACTIVITIES";
+
 
 
 export function getCountries() {
-    return async (dispatch) => {
-        try {
-            const res = await axios.get ("http://localhost:3001/countries");
-            dispatch({ type:GET_COUNTRIES, payload: res.data })
-        } catch (error) {
-            dispatch(setError(error.message));
-        }
+  return async (dispatch, getState) => {
+    try {
+      // Verificar si los datos están en caché
+      const cachedCountries = getState().cache.countries;
+      if (cachedCountries) {
+        // Si los datos están en caché, devolverlos
+        dispatch({ type: GET_COUNTRIES, payload: cachedCountries });
+      } else {
+        const res = await axios.get("http://localhost:3001/countries");
+        dispatch({ type: CACHE_COUNTRIES, payload: res.data });
+        dispatch({ type: GET_COUNTRIES, payload: res.data });
+      }
+    } catch (error) {
+      alert(error.message);
     }
+  };
 }
+
 
 export function setPage(page){
   return async (dispatch) => {
@@ -83,16 +95,23 @@ export function setSelectedContinent(continent) {
   return { type: SET_SELECTED_CONTINENT, payload: continent }
 }
 
-export function getActivities(){
-  return async (dispatch) => {
+export function getActivities() {
+  return async (dispatch, getState) => {
     try {
-        const res = await axios.get ("http://localhost:3001/activities");
-        dispatch({ type:GET_ACTIVITIES, payload: res.data.data })
+      const cachedActivities = getState().cache.activities;
+      if (cachedActivities) {
+        dispatch({ type: GET_ACTIVITIES, payload: cachedActivities });
+      } else {
+        const res = await axios.get("http://localhost:3001/activities");
+        dispatch({ type: CACHE_ACTIVITIES, payload: res.data.data });
+        dispatch({ type: GET_ACTIVITIES, payload: res.data.data });
+      }
     } catch (error) {
-        dispatch(setError(error.message));
+      alert(error.message);
     }
+  };
 }
-}
+
 
 export function postActivity(data){
   return async (dispatch) => {
@@ -100,7 +119,7 @@ export function postActivity(data){
         const res = await axios.post("http://localhost:3001/new/activity", data);
         dispatch({ type:POST_ACTIVITY, payload: res.data })
     } catch (error) {
-        dispatch(setError(error.message));
+      return { type: 'SET_ERROR', payload: 'No se pueden repetir los items' };
     }
 }
 }
@@ -132,7 +151,15 @@ export function searchCountry(searchName){
         const res = await axios.get(`http://localhost:3001/countries?name=${searchName}`);
         dispatch({ type: SEARCH_COUNTRY, payload: res.data });
     } catch(error){
-      return( { type: 'SET_ERROR', payload: 'El campo temporada es obligatorio' });
+      alert(error.message);
     }
   }
+}
+
+export function cacheCountry(){
+  dispatch({ type: CACHE_COUNTRIES, payload: res.data });
+}
+
+export function cacheActivities(){
+  dispatch({ type: CACHE_ACTIVITIES, payload: res.data });
 }

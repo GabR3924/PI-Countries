@@ -33,7 +33,6 @@ const Countries = ({
   const selectedCountry = useSelector((state) => state.selectedCountry);
 
 
-
   const { visibleCountries, page, totalPages, handleNextPage, handlePrevPage } =
     usePagination();
 
@@ -81,7 +80,6 @@ const Countries = ({
         <button onClick={sortPopulationDescending}>poblacion -</button>
       </div>
       </div>
-      
       <div className={style.cards}>
         {visibleCountries &&
           visibleCountries.map((country) => (

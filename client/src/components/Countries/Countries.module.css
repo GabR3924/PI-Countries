@@ -116,12 +116,3 @@
     cursor: pointer;
 }
 
-
-
-
-/* @media only screen and (max-width: 970px) {
-    .cards {
-        display: grid;
-        grid-template-columns:repeat(3, 1fr) ;
-    }
-} */
